@@ -1,16 +1,27 @@
 using UnityEngine;
 
-public class FoodPickUp : MonoBehaviour
+public class PickUp : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject ObjectOnPlayer;
+    public static bool playerIsHolding = false;
+    public static PickUp CurrentHeld = null;
+
+    public void Interact()
     {
-        
+        if (!playerIsHolding)
+        {
+            // Not holding anything, pick up this item
+            PickUpItem();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    private void PickUpItem()
     {
-        
+        playerIsHolding = true;
+        CurrentHeld = this;
+        ObjectOnPlayer.SetActive(true); // Show in hand
+        gameObject.SetActive(false);    // Hide in world
     }
 }
