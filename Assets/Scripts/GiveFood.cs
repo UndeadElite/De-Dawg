@@ -13,5 +13,9 @@ public class GiveFood : MonoBehaviour, IInteractable
             pickUp.DoIHaveFood = false;
             HaveIGivenFood = true;
         }
+        else
+        {
+            //do the typewriter text saying you dont have the food yet
+        }
     }
 }
