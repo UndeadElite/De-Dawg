@@ -9,7 +9,6 @@ public class PickUp : MonoBehaviour, IInteractable
         gameObject.SetActive(false);
         DoIHaveFood = true;
 
-
         anim.SetTrigger("Grab");
         anim.SetBool("Interact", false);
     }

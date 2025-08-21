@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
+
+    [SerializeField] Animator anim;
+
     public float interactionDistance = 3f;
     public LayerMask interactableLayer = 6;
     public Transform playerCamera;
@@ -39,11 +42,13 @@ public class InteractionManager : MonoBehaviour
                     {
                         currentOutline.enabled = true;
                     }
+                    anim.SetBool("Interact", true);
                 }
                 return;
             }
         }
         ResetOutline();
+        anim.SetBool("Interact", false);
     }
 
     void ResetOutline()
