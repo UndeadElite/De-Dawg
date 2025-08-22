@@ -6,6 +6,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.tripolygon.umodeler-x": {
+      "version": "file:com.tripolygon.umodeler-x-1.1.17-pro/com.tripolygon.umodeler-x-1.1.17-pro.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

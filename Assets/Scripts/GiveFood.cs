@@ -12,6 +12,7 @@ public class GiveFood : MonoBehaviour, IInteractable
         {
             pickUp.DoIHaveFood = false;
             HaveIGivenFood = true;
+            //the gameobject.setactive to true (the food that is in the bowl and it turns on depending on which food type it is
         }
         else
         {
