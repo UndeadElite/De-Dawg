@@ -1,17 +1,19 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bed : MonoBehaviour, IInteractable
 {
-    public int nightToSet = 1;
-    GiveFood giveFood;
+    [SerializeField] GiveFood giveFood;
+
     public void Interact()
     {
         if (giveFood.HaveIGivenFood)
         {
             //play cutscene
 
-            NightManager.currentNight = nightToSet;
-            Debug.Log("Night set to " + nightToSet);
+            NightManager.currentNight++;
+            SceneManager.LoadScene("Night" + NightManager.currentNight);
+
         }
     }
 }

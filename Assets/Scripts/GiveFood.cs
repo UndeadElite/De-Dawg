@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GiveFood : MonoBehaviour, IInteractable
 {
-    PickUp pickUp;
+    [SerializeField] PickUp pickUp;
     public bool HaveIGivenFood = false;
 
     //text pop up "Got + "___" !" and do the texting thing like a typewriter
