@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractionManager : MonoBehaviour
 {
 
-    [SerializeField] Animator anim;
+    [SerializeField] Animator armAnimator;
 
     public float interactionDistance = 3f;
     public LayerMask interactableLayer = 6;
@@ -42,13 +42,13 @@ public class InteractionManager : MonoBehaviour
                     {
                         currentOutline.enabled = true;
                     }
-                    anim.SetBool("Interact", true);
+                    armAnimator.SetBool("Interact", true);
                 }
                 return;
             }
         }
         ResetOutline();
-        anim.SetBool("Interact", false);
+        armAnimator.SetBool("Interact", false);
     }
 
     void ResetOutline()
