@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CinemachineTarget
   - Ground
+  - Bed
+  - Dog
+  - Box
   layers:
   - Default
   - TransparentFX

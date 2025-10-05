@@ -5,9 +5,12 @@ using TMPro;
 
 public class TypewriterText : MonoBehaviour
 {
-    Text _text;
     TMP_Text _tmpProText;
     string writer;
+
+    Coroutine typingCoroutine;
+
+    public bool isTyping { get; private set; }
 
     [SerializeField] float delayBeforeStart = 0f;
     [SerializeField] float timeBtwChars = 0.1f;
@@ -15,58 +18,25 @@ public class TypewriterText : MonoBehaviour
     [SerializeField] bool leadingCharBeforeDelay = false;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-        _text = GetComponent<Text>()!;
         _tmpProText = GetComponent<TMP_Text>()!;
-
-        if (_text != null)
-        {
-            writer = _text.text;
-            _text.text = "";
-
-            StartCoroutine("TypeWriterText");
-        }
 
         if (_tmpProText != null)
         {
             writer = _tmpProText.text;
             _tmpProText.text = "";
-
-            StartCoroutine("TypeWriterTMP");
         }
     }
 
-    IEnumerator TypeWriterText()
+    IEnumerator TypeWriterTMP(string text)
     {
-        _text.text = leadingCharBeforeDelay ? leadingChar : "";
-
-        yield return new WaitForSeconds(delayBeforeStart);
-
-        foreach (char c in writer)
-        {
-            if (_text.text.Length > 0)
-            {
-                _text.text = _text.text.Substring(0, _text.text.Length - leadingChar.Length);
-            }
-            _text.text += c;
-            _text.text += leadingChar;
-            yield return new WaitForSeconds(timeBtwChars);
-        }
-
-        if (leadingChar != "")
-        {
-            _text.text = _text.text.Substring(0, _text.text.Length - leadingChar.Length);
-        }
-    }
-
-    IEnumerator TypeWriterTMP()
-    {
+        isTyping = true;
         _tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
 
         yield return new WaitForSeconds(delayBeforeStart);
 
-        foreach (char c in writer)
+        foreach (char c in text)
         {
             if (_tmpProText.text.Length > 0)
             {
@@ -81,5 +51,14 @@ public class TypewriterText : MonoBehaviour
         {
             _tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
         }
+        isTyping = false;
+    }
+
+    public void ShowText(string newText)
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        typingCoroutine = StartCoroutine(TypeWriterTMP(newText));
     }
 }

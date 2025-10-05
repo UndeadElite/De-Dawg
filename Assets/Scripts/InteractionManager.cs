@@ -1,10 +1,12 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
 
     [SerializeField] Animator armAnimator;
-
     public float interactionDistance = 3f;
     public LayerMask interactableLayer = 6;
     public Transform playerCamera;
@@ -12,7 +14,30 @@ public class InteractionManager : MonoBehaviour
     private IInteractable currentInteractable;
     private Outline currentOutline;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public TMP_Text interactText;
+    public TypewriterText typeWriter;
+    Dictionary<string, string> tagTexts;
+    Dictionary<string, Func<string>> specialTexts;
+
+    GiveFood giveFood;
+    PickUp pickUp;
+
+    private void Start()
+    {
+        giveFood = FindFirstObjectByType<GiveFood>();
+        pickUp = FindFirstObjectByType<PickUp>();
+        tagTexts = new Dictionary<string, string>
+        {
+            {"Bed", "Go to Sleep? (E)" },
+            {"Dog", "Give food? (E)" },
+            {"Box", "Open Box? (E)" }
+        };
+        specialTexts = new Dictionary<string, Func<string>>
+        {
+            {"Bed", () => !giveFood.HaveIGivenFood ? "Get the Food First" : tagTexts["Bed"]},
+            {"Dog", () => !pickUp.DoIHaveFood ? "I need the Food First" : tagTexts["Dog"]}
+        };
+    }
     void Update()
     {
         CheckForInteractable();
@@ -43,12 +68,28 @@ public class InteractionManager : MonoBehaviour
                         currentOutline.enabled = true;
                     }
                     armAnimator.SetBool("Interact", true);
+
+                    string tag = hit.collider.tag;
+
+                    if (specialTexts.ContainsKey(tag))
+                    {
+                        typeWriter.ShowText(specialTexts[tag]());
+                    }
+                    else if (tagTexts.ContainsKey(tag))
+                    {
+                        typeWriter.ShowText(tagTexts[tag]);
+                    }
+                    else
+                    {
+                        typeWriter.ShowText("Interact with E");
+                    }
                 }
                 return;
             }
         }
         ResetOutline();
         armAnimator.SetBool("Interact", false);
+        interactText.SetText("");
     }
 
     void ResetOutline()
