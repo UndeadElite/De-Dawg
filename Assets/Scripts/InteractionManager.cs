@@ -26,16 +26,30 @@ public class InteractionManager : MonoBehaviour
     {
         giveFood = FindFirstObjectByType<GiveFood>();
         pickUp = FindFirstObjectByType<PickUp>();
+
         tagTexts = new Dictionary<string, string>
         {
             {"Bed", "Go to Sleep? (E)" },
             {"Dog", "Give food? (E)" },
-            {"Box", "Open Box? (E)" }
+            {"Box", "Open Box? (E)" },
+            {"Food", "Grab Food? (E)" }
         };
         specialTexts = new Dictionary<string, Func<string>>
         {
-            {"Bed", () => !giveFood.HaveIGivenFood ? "Get the Food First" : tagTexts["Bed"]},
-            {"Dog", () => !pickUp.DoIHaveFood ? "I need the Food First" : tagTexts["Dog"]}
+            {"Bed", () =>
+            {
+                if(giveFood == null) giveFood = FindFirstObjectByType<GiveFood>();
+                return !giveFood.HaveIGivenFood ? "Get the Food First" : tagTexts["Bed"];
+            }},
+            {"Dog", () =>
+            {
+                if(pickUp == null) pickUp = FindFirstObjectByType<PickUp>();
+                if(giveFood == null) giveFood = FindFirstObjectByType<GiveFood>();
+                
+                if(giveFood.HaveIGivenFood) return "";
+                if(pickUp == null) return "I need the Food First";
+                return !pickUp.DoIHaveFood ? "I need the Food First" : tagTexts["Dog"];
+            }}
         };
     }
     void Update()
@@ -48,7 +62,7 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    void CheckForInteractable()
+    public void CheckForInteractable()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, interactableLayer))
@@ -75,7 +89,7 @@ public class InteractionManager : MonoBehaviour
                     {
                         typeWriter.ShowText(specialTexts[tag]());
                     }
-                    else if (tagTexts.ContainsKey(tag))
+                    else if (tagTexts != null && tagTexts.ContainsKey(tag))
                     {
                         typeWriter.ShowText(tagTexts[tag]);
                     }

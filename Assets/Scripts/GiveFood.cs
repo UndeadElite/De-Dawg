@@ -12,11 +12,15 @@ public class GiveFood : MonoBehaviour, IInteractable
         {
             pickUp.DoIHaveFood = false;
             HaveIGivenFood = true;
+
+            var inter = FindFirstObjectByType<InteractionManager>();
+            if (inter != null)
+            {
+                inter.typeWriter.ShowText(""); // clears text
+                inter.CheckForInteractable();  // updates text
+            }
+
             //the gameobject.setactive to true (the food that is in the bowl and it turns on depending on which food type it is
-        }
-        else
-        {
-            //do the typewriter text saying you dont have the food yet
         }
     }
 }

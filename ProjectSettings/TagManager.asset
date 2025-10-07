@@ -9,6 +9,7 @@ TagManager:
   - Bed
   - Dog
   - Box
+  - Food
   layers:
   - Default
   - TransparentFX
