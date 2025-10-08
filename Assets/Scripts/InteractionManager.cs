@@ -39,7 +39,7 @@ public class InteractionManager : MonoBehaviour
             {"Bed", () =>
             {
                 if(giveFood == null) giveFood = FindFirstObjectByType<GiveFood>();
-                return !giveFood.HaveIGivenFood ? "Get the Food First" : tagTexts["Bed"];
+                return !giveFood.HaveIGivenFood ? "I have to feed the dog" : tagTexts["Bed"];
             }},
             {"Dog", () =>
             {

@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 24676965793949953}
   m_Layer: 6
   m_Name: MOTHAFUCKINGDOG
-  m_TagString: Untagged
+  m_TagString: Bed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -792,6 +792,7 @@ Transform:
   m_Children:
   - {fileID: 809647903959880317}
   - {fileID: 1085917466786150777}
+  - {fileID: 6145462025281335446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &24676965793949953
@@ -1230,6 +1231,72 @@ Transform:
   - {fileID: 6942269876617225003}
   m_Father: {fileID: 7647562856256106644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6660795122743390702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6145462025281335446}
+  - component: {fileID: 5073780956490215559}
+  - component: {fileID: 5071135607230897645}
+  m_Layer: 6
+  m_Name: BarkCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6145462025281335446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6660795122743390702}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.13052617, z: -0, w: 0.99144495}
+  m_LocalPosition: {x: -1.3570005, y: 1.478, z: 3.0069997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2749708325032938642}
+  m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
+--- !u!65 &5073780956490215559
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6660795122743390702}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.76, y: 4.64, z: 7.23}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5071135607230897645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6660795122743390702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867f2ad48cc36bf4cb64fb23f08ef906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6989355042725420061
 GameObject:
   m_ObjectHideFlags: 0
