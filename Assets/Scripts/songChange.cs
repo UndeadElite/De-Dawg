@@ -6,7 +6,6 @@ public class SongChange : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip firstSong;
     [SerializeField] AudioClip songToChangeTo;
-    [SerializeField] float volume = 1f;
     [SerializeField] float reTriggerDelay = 1f;
     [SerializeField] bool reTrigger;
 

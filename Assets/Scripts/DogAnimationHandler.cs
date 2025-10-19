@@ -1,39 +1,41 @@
-using StarterAssets;
 using UnityEngine;
 
 public class DogAnimationHandler : MonoBehaviour
 {
     Animator dogAnimator;
+    [SerializeField] AudioClip barkSfx;
+    [SerializeField] GameObject barkSfxLocation;
 
     GiveFood giveFood;
-
+    PlayerBarkDetection playerBarkDetection;
     private void Start()
     {
+        playerBarkDetection = GetComponentInChildren<PlayerBarkDetection>();
         giveFood = GetComponent<GiveFood>();
         giveFood = FindFirstObjectByType<GiveFood>();
         dogAnimator = GetComponentInParent<Animator>();
         dogAnimator.SetBool("isEating", false);
     }
-    void OnTriggerStay(Collider other)
+
+    private void Update()
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (playerBarkDetection.playerInCollider)
         {
             dogAnimator.SetBool("playerNear", true);
-            Debug.Log("Start barking");
             if (giveFood.HaveIGivenFood)
             {
                 dogAnimator.SetBool("isEating", true);
-                Debug.Log("Stop Barking - food given");
             }
+        }
+        else
+        {
+            dogAnimator.SetBool("playerNear", false);
         }
     }
 
-    void OnTriggerExit(Collider other)
+    void PlayBarkSfx()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            dogAnimator.SetBool("playerNear", false);
-            Debug.Log("Stop barking");
-        }
+        //create a randomized bark clip
+        AudioSource.PlayClipAtPoint(barkSfx, barkSfxLocation.transform.position, 0f);
     }
 }
