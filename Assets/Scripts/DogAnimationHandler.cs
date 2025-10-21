@@ -3,8 +3,9 @@ using UnityEngine;
 public class DogAnimationHandler : MonoBehaviour
 {
     Animator dogAnimator;
-    [SerializeField] AudioClip barkSfx;
     [SerializeField] GameObject barkSfxLocation;
+
+    public AudioClip[] barkSfxs;
 
     GiveFood giveFood;
     PlayerBarkDetection playerBarkDetection;
@@ -36,6 +37,6 @@ public class DogAnimationHandler : MonoBehaviour
     void PlayBarkSfx()
     {
         //create a randomized bark clip
-        AudioSource.PlayClipAtPoint(barkSfx, barkSfxLocation.transform.position, 0f);
+        AudioSource.PlayClipAtPoint(barkSfxs[UnityEngine.Random.Range(0, barkSfxs.Length)], barkSfxLocation.transform.position, 0.3f);
     }
 }

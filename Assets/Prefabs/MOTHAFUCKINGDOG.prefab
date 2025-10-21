@@ -1241,7 +1241,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6145462025281335446}
   - component: {fileID: 5073780956490215559}
-  - component: {fileID: 5071135607230897645}
   m_Layer: 6
   m_Name: BarkCollider
   m_TagString: Untagged
@@ -1285,18 +1284,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.76, y: 4.64, z: 7.23}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5071135607230897645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6660795122743390702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867f2ad48cc36bf4cb64fb23f08ef906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6989355042725420061
 GameObject:
   m_ObjectHideFlags: 0
