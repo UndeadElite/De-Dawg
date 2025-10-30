@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class DogAnimationHandler : MonoBehaviour
 {
     Animator dogAnimator;
     [SerializeField] GameObject barkSfxLocation;
+    [SerializeField] Door doorScript;
 
     public AudioClip[] barkSfxs;
 
@@ -23,6 +25,8 @@ public class DogAnimationHandler : MonoBehaviour
         if (playerBarkDetection.playerInCollider)
         {
             dogAnimator.SetBool("playerNear", true);
+
+            doorScript.doorBell = true;
             if (giveFood.HaveIGivenFood)
             {
                 dogAnimator.SetBool("isEating", true);

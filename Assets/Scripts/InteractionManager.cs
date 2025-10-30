@@ -103,6 +103,7 @@ public class InteractionManager : MonoBehaviour
         }
         ResetOutline();
         armAnimator.SetBool("Interact", false);
+        typeWriter.StopAllCoroutines();
         interactText.SetText("");
     }
 

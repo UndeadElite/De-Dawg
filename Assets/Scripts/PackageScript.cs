@@ -8,6 +8,14 @@ public class PackageScript : MonoBehaviour, IInteractable
     public GameObject smokeVFX;
 
     public GameObject Food;
+    Animator boxAnimator;
+
+    Door doorScript;
+    private void Start()
+    {
+        boxAnimator = GetComponentInParent<Animator>();
+    }
+
     public void Interact()
     {
         Debug.Log("interacted with foodbox");

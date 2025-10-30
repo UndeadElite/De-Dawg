@@ -6,7 +6,9 @@ public class Door : MonoBehaviour, IInteractable
     Animator doorAnimator;
     [SerializeField] AudioClip doorSfx;
     [SerializeField] AudioClip doorBellSfx;
-    bool doorBell = false;
+    [SerializeField] PackageScript packageScript;
+    public bool doorBell = false;
+    bool stoppedDoorBell = false;
 
     void Start()
     {
@@ -18,27 +20,38 @@ public class Door : MonoBehaviour, IInteractable
     {
         if (doorBell)
         {
-            StartCoroutine("getTheFood");
+            //this shit cannot be in update - it'll keep creating new one shots
+            StartCoroutine(GetTheFood());
+            stoppedDoorBell = true;
         }
     }
     public void Interact()
     {
-        doorAnimator.SetBool("Opening", true);
-        doorOpeningSfx();
+        if (stoppedDoorBell)
+        {
+            doorAnimator.SetBool("Opening", true);
+            AudioSource.PlayClipAtPoint(doorSfx, gameObject.transform.position, 0.5f);
+            doorBell = false;
 
-        //WaitForSeconds(2f);
-        //play a animation where the package hovers first outside the door then floats inside the apartment
+            StartCoroutine(GetPackage());
+        }
     }
 
-    void doorOpeningSfx()
-    {
-        Debug.Log("play sfx");
-        AudioSource.PlayClipAtPoint(doorSfx, gameObject.transform.position, 0.5f);
-    }
-
-    IEnumerator getTheFood()
+    IEnumerator GetTheFood()
     {
         AudioSource.PlayClipAtPoint(doorBellSfx, gameObject.transform.position, 1f);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
+    }
+
+    IEnumerator GetPackage()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Coroutine reached");
+
+        Animator packageAnimator = packageScript.GetComponentInParent<Animator>();
+        if(packageAnimator != null)
+        {
+            packageAnimator.SetBool("goInside", true);
+        }
     }
 }
