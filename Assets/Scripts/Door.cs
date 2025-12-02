@@ -16,7 +16,7 @@ public class Door : MonoBehaviour, IInteractable
         doorAnimator.SetBool("Opening", false);
     }
 
-    public void DoorBellPlayer()
+    private void Update()
     {
         if (doorBell && !hasRungDoorBell)
         {
@@ -38,9 +38,12 @@ public class Door : MonoBehaviour, IInteractable
 
     IEnumerator GetTheFood()
     {
-        AudioSource.PlayClipAtPoint(doorBellSfx, transform.position, 1f);
-        yield return new WaitForSeconds(5f);
-        hasRungDoorBell = false; // reset if you want to allow ringing again later
+        while (doorBell)
+        {
+            Debug.Log("Door bell should play now");
+            AudioSource.PlayClipAtPoint(doorBellSfx, transform.position, 1f);
+            yield return new WaitForSeconds(3f);
+        }
     }
 
     IEnumerator GetPackage()

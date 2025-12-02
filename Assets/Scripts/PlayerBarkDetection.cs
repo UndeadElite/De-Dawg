@@ -5,7 +5,7 @@ public class PlayerBarkDetection : MonoBehaviour
     public bool playerInCollider = false;
 
     [SerializeField] Door doorScript;
-    private void OnTriggerStay(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
@@ -14,7 +14,7 @@ public class PlayerBarkDetection : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (!other.gameObject.CompareTag("Player"))
         {
