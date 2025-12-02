@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class DogAnimationHandler : MonoBehaviour
@@ -26,7 +25,6 @@ public class DogAnimationHandler : MonoBehaviour
         {
             dogAnimator.SetBool("playerNear", true);
 
-            doorScript.doorBell = true;
             if (giveFood.HaveIGivenFood)
             {
                 dogAnimator.SetBool("isEating", true);

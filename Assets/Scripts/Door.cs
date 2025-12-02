@@ -8,7 +8,7 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] AudioClip doorBellSfx;
     [SerializeField] PackageScript packageScript;
     public bool doorBell = false;
-    bool stoppedDoorBell = false;
+    bool hasRungDoorBell = false;
 
     void Start()
     {
@@ -16,40 +16,38 @@ public class Door : MonoBehaviour, IInteractable
         doorAnimator.SetBool("Opening", false);
     }
 
-    void Update()
+    public void DoorBellPlayer()
     {
-        if (doorBell)
+        if (doorBell && !hasRungDoorBell)
         {
-            //this shit cannot be in update - it'll keep creating new one shots
+            hasRungDoorBell = true;
             StartCoroutine(GetTheFood());
-            stoppedDoorBell = true;
         }
     }
+
     public void Interact()
     {
-        if (stoppedDoorBell)
+        if (hasRungDoorBell)
         {
             doorAnimator.SetBool("Opening", true);
-            AudioSource.PlayClipAtPoint(doorSfx, gameObject.transform.position, 0.5f);
+            AudioSource.PlayClipAtPoint(doorSfx, transform.position, 0.5f);
             doorBell = false;
-
             StartCoroutine(GetPackage());
         }
     }
 
     IEnumerator GetTheFood()
     {
-        AudioSource.PlayClipAtPoint(doorBellSfx, gameObject.transform.position, 1f);
+        AudioSource.PlayClipAtPoint(doorBellSfx, transform.position, 1f);
         yield return new WaitForSeconds(5f);
+        hasRungDoorBell = false; // reset if you want to allow ringing again later
     }
 
     IEnumerator GetPackage()
     {
         yield return new WaitForSeconds(2f);
-        Debug.Log("Coroutine reached");
-
         Animator packageAnimator = packageScript.GetComponentInParent<Animator>();
-        if(packageAnimator != null)
+        if (packageAnimator != null)
         {
             packageAnimator.SetBool("goInside", true);
         }
