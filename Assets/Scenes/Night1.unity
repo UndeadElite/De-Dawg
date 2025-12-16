@@ -3958,6 +3958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588764205}
   - component: {fileID: 588764204}
+  - component: {fileID: 588764206}
   m_Layer: 0
   m_Name: BedCinemachineCamera
   m_TagString: Untagged
@@ -4017,12 +4018,34 @@ Transform:
   m_GameObject: {fileID: 588764203}
   serializedVersion: 2
   m_LocalRotation: {x: 0.11222293, y: -0.8877834, z: 0.3027913, w: 0.32796973}
-  m_LocalPosition: {x: -17.69165, y: 0.00999999, z: -3.8390353}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2006595689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &588764206
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588764203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c6e55afc868c104587d444e2246d5d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &601574733
 GameObject:
   m_ObjectHideFlags: 0
@@ -15346,8 +15369,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006595688}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.11222303, y: -0.8877834, z: 0.30279133, w: 0.32796976}
+  m_LocalPosition: {x: -17.69165, y: 0.00999999, z: -3.8390353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15376,13 +15399,17 @@ PlayableDirector:
     value: {fileID: 581673261}
   - key: {fileID: -4982040835641039774, guid: 6119a0febcce164419505abfbf9fe9fc, type: 2}
     value: {fileID: 946278235}
+  - key: {fileID: -7268244937461013877, guid: 6119a0febcce164419505abfbf9fe9fc, type: 2}
+    value: {fileID: 588764206}
   m_ExposedReferences:
     m_References:
     - 2fd42681762d59c4785aa74f69497baf: {fileID: 588764204}
     - 39282a3a7974b1e4faae170c4395cfe7: {fileID: 946278231}
+    - 36bf4f67df5fa0249856f19e2b841a72: {fileID: 588764204}
     - ab9c19ae07958ee46acd66a68f826499: {fileID: 588764204}
     - 1daefe135add8124283cda8583a44d26: {fileID: 0}
     - dd6b16f920f8b28479a8f8cd8b11d623: {fileID: 0}
+    - ad50ebaf4aff6254c84f84a1a94ed6c8: {fileID: 588764203}
 --- !u!1001 &2023796841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15844,7 +15871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081622398}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2978353, y: -0.36664206, z: 0.12478252, w: 0.8725234}
+  m_LocalRotation: {x: 0.1953619, y: -0.9710378, z: 0.08184972, w: -0.11054442}
   m_LocalPosition: {x: -2.7085378, y: -0.0550251, z: 19.22491}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
