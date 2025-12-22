@@ -7,9 +7,16 @@ public class PlayerControllerManager : MonoBehaviour
     [SerializeField] FirstPersonController firstPersonController;
     [SerializeField] GameObject playerModel;
 
+    public GameObject FirstPersonCamera; //Player's pov
+    public GameObject CutsceneCamera; //Cutscene with a brain
+    public GameObject CutscenePlayerCamera; //Cutscene from the player's pov
     private void Awake()
     {
         Instance = this;
+
+        PlayerControllerManager.Instance.CutsceneCamera.SetActive(false);
+        PlayerControllerManager.Instance.CutscenePlayerCamera.SetActive(false);
+        PlayerControllerManager.Instance.FirstPersonCamera.SetActive(true);
     }
 
     public void Activate()

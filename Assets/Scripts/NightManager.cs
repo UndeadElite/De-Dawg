@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class NightManager : MonoBehaviour
 {
-    public static int currentNight = 0;
+    public static int currentNight = 1;
 }

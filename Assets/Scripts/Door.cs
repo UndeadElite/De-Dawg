@@ -40,8 +40,7 @@ public class Door : MonoBehaviour, IInteractable
     {
         while (doorBell)
         {
-            Debug.Log("Door bell should play now");
-            AudioSource.PlayClipAtPoint(doorBellSfx, transform.position, 1f);
+            AudioSource.PlayClipAtPoint(doorBellSfx, transform.position, 0.5f);
             yield return new WaitForSeconds(3f);
         }
     }

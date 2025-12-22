@@ -30,7 +30,8 @@ public class DogAnimationHandler : MonoBehaviour
                 dogAnimator.SetBool("isEating", true);
             }
         }
-        else
+
+        if (!playerBarkDetection.playerInCollider)
         {
             dogAnimator.SetBool("playerNear", false);
         }
