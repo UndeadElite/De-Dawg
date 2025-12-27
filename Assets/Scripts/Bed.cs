@@ -15,7 +15,6 @@ public class Bed : MonoBehaviour, IInteractable
             screenText.SetActive(false);
             bedCutscene.SetActive(true);
             cutsceneStart.Activate();
-
         }
     }
 }

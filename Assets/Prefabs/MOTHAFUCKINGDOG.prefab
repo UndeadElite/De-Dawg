@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 5751870877362086758}
   m_Layer: 6
   m_Name: BuzzDog
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -770,9 +770,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2749708325032938642}
   - component: {fileID: 24676965793949953}
+  - component: {fileID: 5922259269394078144}
   m_Layer: 6
   m_Name: MOTHAFUCKINGDOG
-  m_TagString: Bed
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -817,6 +818,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5922259269394078144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472757975236444419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867f2ad48cc36bf4cb64fb23f08ef906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barkSfxLocation: {fileID: 4472757975236444419}
+  doorScript: {fileID: 0}
+  barkSfxs:
+  - {fileID: 8300000, guid: 1151be632ba5881428bf09cb3417febd, type: 3}
+  - {fileID: 8300000, guid: d5ea2fbea75527740819ee03013a6fc5, type: 3}
+  - {fileID: 8300000, guid: a802c8fe1ffbbfe4387c99c2d19795fd, type: 3}
+  - {fileID: 8300000, guid: 084ae23c4a099614c830e36177637e00, type: 3}
+  - {fileID: 8300000, guid: efee2bc151c0ad740af2855b3dbaca9e, type: 3}
 --- !u!1 &4514137397165239936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,6 +1262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6145462025281335446}
   - component: {fileID: 5073780956490215559}
+  - component: {fileID: 2284180341112727682}
   m_Layer: 6
   m_Name: BarkCollider
   m_TagString: Untagged
@@ -1284,6 +1306,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.76, y: 4.64, z: 7.23}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2284180341112727682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6660795122743390702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2ab68d982a5a64f804faf5dbafdb23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInCollider: 0
+  doorScript: {fileID: 0}
 --- !u!1 &6989355042725420061
 GameObject:
   m_ObjectHideFlags: 0
