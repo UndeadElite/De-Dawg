@@ -8,7 +8,7 @@ public class FoodSpawner : MonoBehaviour
     {
         foreach (var f in foods) f.SetActive(false);
 
-        int index = NightManager.currentNight - 1;
+        int index = NightManager.CurrentNight - 1;
         if(index >= 0 && index < foods.Length)
         {
             foods[index].SetActive(true);

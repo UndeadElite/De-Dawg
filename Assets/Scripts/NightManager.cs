@@ -2,5 +2,12 @@ using UnityEngine;
 
 public class NightManager : MonoBehaviour
 {
-    public static int currentNight = 1;
+    [SerializeField] int currentNight = 1;
+    public static int CurrentNight;
+
+    void Awake()
+    {
+        if (CurrentNight == 0)
+            CurrentNight = currentNight;
+    }
 }

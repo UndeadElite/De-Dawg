@@ -21,8 +21,8 @@ public class CutsceneStart : MonoBehaviour
         PlayerControllerManager.Instance.CutscenePlayerCamera.SetActive(false);
         PlayerControllerManager.Instance.FirstPersonCamera.SetActive(true);
 
-        NightManager.currentNight++;
-        SceneManager.LoadScene("Night" + NightManager.currentNight);
-        Debug.Log("Night" + NightManager.currentNight);
+        NightManager.CurrentNight++;
+        SceneManager.LoadScene("Night" + NightManager.CurrentNight);
+        Debug.Log("Night" + NightManager.CurrentNight);
     }
 }
