@@ -2,25 +2,30 @@ using UnityEngine;
 
 public class GiveFood : MonoBehaviour, IInteractable
 {
-    [SerializeField] PickUp pickUp;
+    [SerializeField] private PickUp pickUp;
+    public CutsceneStart cutsceneStart;
     public bool HaveIGivenFood = false;
 
-    //text pop up "Got + "___" !" and do the texting thing like a typewriter
     public void Interact()
     {
-        if (pickUp.DoIHaveFood)
+        PickUp targetPickUp = pickUp;
+
+        if ((pickUp != null && pickUp.DoIHaveFood) ||
+            (cutsceneStart != null && cutsceneStart.pickUp != null && cutsceneStart.pickUp.DoIHaveFood))
         {
-            pickUp.DoIHaveFood = false;
+            // If the Timeline PickUp is true, assign it to targetPickUp so the InteractionManager sees it
+            if (targetPickUp != null && !targetPickUp.DoIHaveFood && cutsceneStart.pickUp.DoIHaveFood)
+                targetPickUp = cutsceneStart.pickUp;
+
+            targetPickUp.DoIHaveFood = false;
             HaveIGivenFood = true;
 
             var inter = FindFirstObjectByType<InteractionManager>();
             if (inter != null)
             {
-                inter.typeWriter.ShowText(""); // clears text
-                inter.CheckForInteractable();  // updates text
+                inter.typeWriter.ShowText("");
+                inter.CheckForInteractable();
             }
-
-            //the gameobject.setactive to true (the food that is in the bowl and it turns on depending on which food type it is
         }
     }
 }

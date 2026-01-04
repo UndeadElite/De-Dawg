@@ -45,10 +45,16 @@ public class InteractionManager : MonoBehaviour
             {
                 if(pickUp == null) pickUp = FindFirstObjectByType<PickUp>();
                 if(giveFood == null) giveFood = FindFirstObjectByType<GiveFood>();
-                
+
                 if(giveFood.HaveIGivenFood) return "";
-                if(pickUp == null) return "I need the Food First";
-                return !pickUp.DoIHaveFood ? "I need the Food First" : tagTexts["Dog"];
+
+                if(pickUp == null && (giveFood.cutsceneStart == null || giveFood.cutsceneStart.pickUp == null))
+                return "I need the Food First";
+
+                bool hasFood = (pickUp != null && pickUp.DoIHaveFood) ||
+                   (giveFood.cutsceneStart != null && giveFood.cutsceneStart.pickUp != null && giveFood.cutsceneStart.pickUp.DoIHaveFood);
+
+                return !hasFood ? "I need the Food First" : tagTexts["Dog"];
             }}
         };
     }

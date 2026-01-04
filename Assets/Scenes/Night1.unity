@@ -13571,6 +13571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99addd72f3a6c1046a07a1f03319ea3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextNight: 1
   cutsceneToPlay: {fileID: 2006595688}
   songAudioSource: {fileID: 201473819}
 --- !u!114 &1676319696
@@ -14923,7 +14924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 201473819}
   firstSong: {fileID: 0}
-  songToChangeTo: {fileID: 8300000, guid: b30138a0a6000494f82daac975eebb7b, type: 3}
+  songToChangeTo: {fileID: 8300000, guid: 7c5ac0d99d8f3c249a30272f51d39d78, type: 3}
   reTriggerDelay: 999999
   reTrigger: 0
 --- !u!65 &1874959235
