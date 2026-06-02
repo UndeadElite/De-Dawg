@@ -13574,6 +13574,8 @@ MonoBehaviour:
   nextNight: 1
   cutsceneToPlay: {fileID: 2006595688}
   songAudioSource: {fileID: 201473819}
+  screenText: {fileID: 861625171}
+  pickUp: {fileID: 1713728241}
 --- !u!114 &1676319696
 MonoBehaviour:
   m_ObjectHideFlags: 0
